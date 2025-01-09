@@ -44,7 +44,7 @@
   --button-outlined-background-color: transparent;
   --button-outlined-text-color: #fff;
 
-  --glow-color: rgba(200, 200, 200, 0.8);
+  --glow-color: rgb(100, 0, 255);
 }
 
 [data-theme="purple"] {
