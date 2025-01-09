@@ -65,6 +65,24 @@
   --glow-color: rgba(255, 0, 255, 0.8);
 }
 
+[data-theme="navy"] {
+  --primary-background-color: #001f3f;
+  --secondary-background-color: #001233;
+
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #7FDBFF;
+
+  --primary-border-color: #0074D9;
+
+  --button-solid-background-color: #0074D9;
+  --button-solid-text-color: #ffffff;
+
+  --button-outlined-background-color: transparent;
+  --button-outlined-text-color: #0074D9;
+
+  --glow-color: rgba(0, 116, 217, 0.8);
+}
+
 html,
 body,
 #root {

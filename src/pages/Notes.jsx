@@ -55,6 +55,7 @@ function Notes() {
           backgroundColor="rgb(80, 0, 100)"
           borderColor="white"
         />
+        <ThemeSelector theme="navy" backgroundColor="rgb(30, 30, 70)" borderColor="white"/>
       </div>
 
       <NoteForm setNotes={setNotes} />
