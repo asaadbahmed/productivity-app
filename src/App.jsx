@@ -3,6 +3,9 @@ import Notes from "./pages/Notes";
 import Login from "./pages/Login";
 
 function App() {
+  if (window.matchMedia("(prefers-color-scheme: dark)")) {
+    document.body.setAttribute("data-theme", "dark");
+  }
   return (
     <div id="app">
       <div id="container">
