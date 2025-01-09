@@ -2,7 +2,7 @@ import { useState } from "react";
 import db from "../appwrite/databases";
 import DeleteIcon from "../assets/DeleteIcon";
 
-function Note({ setNotes, setProgress, noteData, noteCount }) {
+function Note({ setNotes, setProgress, noteData }) {
   const [note, setNote] = useState(noteData);
   const handleUpdate = async () => {
     const completed = !note.completed;
@@ -16,19 +16,22 @@ function Note({ setNotes, setProgress, noteData, noteCount }) {
     if (completed) {
       setNotes((prevState) => {
         const filteredNotes = prevState.filter((n) => n.$id != note.$id);
+        const progress =
+          filteredNotes.filter((n) => n.completed).length + (completed ? 1 : 0);
+        setProgress(progress / (filteredNotes.length + 1));
         return [...filteredNotes, note];
       });
     } else {
       setNotes((prevState) => {
         const filteredNotes = prevState.filter((n) => n.$id != note.$id);
+        const progress =
+          filteredNotes.filter((n) => n.completed).length + (completed ? 1 : 0);
+        setProgress(progress / (filteredNotes.length + 1));
         return [note, ...filteredNotes];
       });
     }
 
     setNote({ ...note, completed: completed });
-    setProgress((prevState) =>
-      completed ? prevState + 1 / noteCount : prevState - 1 / noteCount
-    );
   };
 
   const handleDelete = async () => {
@@ -36,13 +39,12 @@ function Note({ setNotes, setProgress, noteData, noteCount }) {
     const completed = note.completed;
     db.notes.delete(note.$id);
 
-    setProgress((prevState) => {
-      if (noteCount == 0) return 0;
-      return completed ? (prevState - 1) / noteCount : prevState / noteCount;
+    setNotes((prevState) => {
+      const otherNotes = prevState.filter(n.$id != note.$id);
+      const otherCompletedNotes = otherNotes.filter(n.completed);      
+      setProgress(otherCompletedNotes / otherNotes);
+      return prevState.filter((index) => index.$id !== note.$id);
     });
-    setNotes((prevState) =>
-      prevState.filter((index) => index.$id !== note.$id)
-    );
   };
 
   return (

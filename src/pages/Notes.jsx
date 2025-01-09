@@ -78,7 +78,6 @@ function Notes() {
             noteData={note}
             setNotes={setNotes}
             setProgress={setProgress}
-            noteCount={notes.length}
           />
         ))}
       </div>
