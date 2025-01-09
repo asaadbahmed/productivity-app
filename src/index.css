@@ -98,9 +98,9 @@ div {
 #notes-form input {
   outline: none;
   transition: box-shadow 1s ease, border-radius 0.5s ease;
-  
+
   border: 1px solid var(--primary-border-color);
-  padding: 1em;  
+  padding: 1em;
   border-radius: 2rem;
   width: 100%;
   font-size: 18px;
@@ -166,7 +166,7 @@ input[type="password"] {
 
 button {
   padding: 1em 1.5em;
-
+  
   width: fit-content;
   font-size: 18px;
   font-weight: 500;
