@@ -9,7 +9,7 @@ function App() {
   return (
     <div id="app">
       <div id="container">
-        <BrowserRouter>
+        <BrowserRouter basename="/productivity-app">
           <Routes>
             <Route element={<Notes />} path="/" />
             <Route element={<Login />} path="/login" />
