@@ -25,6 +25,8 @@
   --alert-color: #fff9e7;
   --alert-border-color: #ffbf00;
   --alert-text-color: #b8952f;
+
+  --glow-color: rgba(0, 200, 255, 0.8);
 }
 
 [data-theme="dark"] {
@@ -41,6 +43,8 @@
 
   --button-outlined-background-color: transparent;
   --button-outlined-text-color: #fff;
+
+  --glow-color: rgba(200, 200, 200, 0.8);
 }
 
 [data-theme="purple"] {
@@ -57,6 +61,8 @@
 
   --button-outlined-background-color: transparent;
   --button-outlined-text-color: #fff;
+
+  --glow-color: rgba(255, 0, 255, 0.8);
 }
 
 html,
@@ -104,7 +110,7 @@ div {
 }
 
 #notes-form input:focus {
-  box-shadow: 0 0 8px rgba(0, 200, 255, 0.8); /* Glow */
+  box-shadow: 0 0 4px var(--glow-color); /* Glow */
   border-radius: 1rem;
 }
 
