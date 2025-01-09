@@ -11,6 +11,9 @@ function Notes() {
   const [notes, setNotes] = useState([]);
   const [progress, setProgress] = useState(0);
   const normalize = (value, min, max) => (value - min) / (max - min);
+  const completionMessages = {
+    0: "You haven't completed any notes yet. Let's get started!",
+  };
 
   const init = async () => {
     const response = await db.notes.list([Query.orderDesc("$createdAt")]);
@@ -55,11 +58,22 @@ function Notes() {
           backgroundColor="rgb(80, 0, 100)"
           borderColor="white"
         />
-        <ThemeSelector theme="navy" backgroundColor="rgb(30, 30, 70)" borderColor="white"/>
+        <ThemeSelector
+          theme="navy"
+          backgroundColor="rgb(30, 30, 70)"
+          borderColor="white"
+        />
       </div>
 
-      <NoteForm setNotes={setNotes} />
-      <ProgressBar variant="determinate" value={normalize(progress, 0, 1) * 100} />
+      <NoteForm
+        setNotes={setNotes}
+        setProgress={setProgress}
+        noteCount={notes.length}
+      />
+      <ProgressBar
+        variant="determinate"
+        value={normalize(progress, 0, 1) * 100}
+      />
 
       <div>
         {notes.map((note) => (
@@ -68,7 +82,7 @@ function Notes() {
             noteData={note}
             setNotes={setNotes}
             setProgress={setProgress}
-            numberOfNotes={notes.length}
+            noteCount={notes.length}
           />
         ))}
       </div>

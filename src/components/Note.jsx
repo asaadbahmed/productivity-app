@@ -2,26 +2,26 @@ import { useState } from "react";
 import db from "../appwrite/databases";
 import DeleteIcon from "../assets/DeleteIcon";
 
-function Note({ setNotes, setProgress, noteData, numberOfNotes }) {
+function Note({ setNotes, setProgress, noteData, noteCount }) {
   const [note, setNote] = useState(noteData);
   const handleUpdate = async () => {
     const completed = !note.completed;
     db.notes.update(note.$id, { completed });
     setNote({ ...note, completed: completed });
-    /*
-    lets say numberOfNotes is 6
-    lets say prevState is 0.5
-    then that means [(6 * 0.5) = 3] notes are completed
-    that means if we complete a note, we should increment the progress by 1/6 or 1/numberOfNotes
-    */
     setProgress((prevState) =>
-      completed ? prevState + 1 / numberOfNotes : prevState - 1 / numberOfNotes
+      completed ? prevState + 1 / noteCount : prevState - 1 / noteCount
     );
   };
 
   const handleDelete = async () => {
     /* deletion effect goes here wooo */
+    const checked = note.completed;
     db.notes.delete(note.$id);
+
+    setProgress((prevState) => {
+      if (noteCount == 0) return 0;
+      return checked ? (prevState - 1) / noteCount : prevState / noteCount;
+    });
     setNotes((prevState) =>
       prevState.filter((index) => index.$id !== note.$id)
     );
