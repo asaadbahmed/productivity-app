@@ -1,4 +1,4 @@
-export default function MilestoneText({ progress }) {
+export default function MilestoneText({ percentage }) {
   const milestoneMessages = {
     0: "You haven't completed any notes yet. Let's get started! 🚦",
     10: "Good job, you've started! The first step is the hardest step! 🥳",
@@ -7,7 +7,6 @@ export default function MilestoneText({ progress }) {
     75: "Fantastic job, you're so close! I'm rooting for you! 🎉",
     100: "Woohoo, I knew you could do it! Pat yourself on the back! 🥳 🎉",
   };
-  const percentage = progress * 100;
   const closestMilestone = Object.keys(milestoneMessages)
     .map(Number)
     .reverse()

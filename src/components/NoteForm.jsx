@@ -1,7 +1,7 @@
 import React from "react";
 import db from "../appwrite/databases";
 
-function NoteForm({ setNotes, setProgress, noteCount }) {
+function NoteForm({ setNotes, noteCount }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -13,7 +13,6 @@ function NoteForm({ setNotes, setProgress, noteCount }) {
       const response = await db.notes.create(payload);
 
       setNotes((prevState) => [response, ...prevState]);
-      setProgress((prevState) => prevState / (noteCount + 1));
 
       event.target.reset();
     } catch (error) {

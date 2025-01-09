@@ -11,7 +11,6 @@ import MilestoneText from "../components/MilestoneText";
 function Notes() {
   const [notes, setNotes] = useState([]);
   const [progress, setProgress] = useState(0);
-  const normalize = (value, min, max) => (value - min) / (max - min);
 
   const init = async () => {
     const response = await db.notes.list([Query.orderDesc("$createdAt")]);
@@ -23,9 +22,12 @@ function Notes() {
   }, []);
 
   useEffect(() => {
-    const completedNotes = notes.filter((note) => note.completed).length;
+    const completedNotes = notes.filter((note) => {
+      console.log(note.completed);
+      return note.completed
+    }).length;
     const totalNotes = notes.length;
-
+    console.log(`${completedNotes} / ${totalNotes}`);
     setProgress(totalNotes > 0 ? completedNotes / totalNotes : 0);
   }, [notes]);
 
@@ -58,27 +60,18 @@ function Notes() {
         />
       </div>
 
-      <NoteForm
-        setNotes={setNotes}
-        setProgress={setProgress}
-        noteCount={notes.length}
-      />
+      <NoteForm setNotes={setNotes} noteCount={notes.length} />
 
-      <MilestoneText progress={progress} />
+      <MilestoneText percentage={progress * 100} />
       <ProgressBar
         variant="determinate"
-        value={normalize(progress, 0, 1) * 100}
+        value={progress * 100}
         style={{ visibility: progress <= 0 ? "hidden" : "visible" }}
       />
 
       <div>
         {notes.map((note) => (
-          <Note
-            key={note.$id}
-            noteData={note}
-            setNotes={setNotes}
-            setProgress={setProgress}
-          />
+          <Note key={note.$id} noteData={note} setNotes={setNotes} />
         ))}
       </div>
     </>
