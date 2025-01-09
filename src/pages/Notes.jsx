@@ -6,23 +6,16 @@ import ThemeSelector from "../components/ThemeSelector";
 import NoteForm from "../components/NoteForm";
 import Note from "../components/Note";
 import ProgressBar from "../components/ProgressBar";
+import MilestoneText from "../components/MilestoneText";
 
 function Notes() {
   const [notes, setNotes] = useState([]);
   const [progress, setProgress] = useState(0);
   const normalize = (value, min, max) => (value - min) / (max - min);
-  const completionMessages = {
-    0: "You haven't completed any notes yet. Let's get started!",
-  };
 
   const init = async () => {
     const response = await db.notes.list([Query.orderDesc("$createdAt")]);
     setNotes(response.documents);
-
-    const completedNotes = notes.filter((note) => note.completed).length;
-    const totalNotes = notes.length;
-
-    setProgress(totalNotes > 0 ? completedNotes / totalNotes : 0);
   };
 
   useEffect(() => {
@@ -32,7 +25,7 @@ function Notes() {
   useEffect(() => {
     const completedNotes = notes.filter((note) => note.completed).length;
     const totalNotes = notes.length;
-    
+
     setProgress(totalNotes > 0 ? completedNotes / totalNotes : 0);
   }, [notes]);
 
@@ -70,9 +63,12 @@ function Notes() {
         setProgress={setProgress}
         noteCount={notes.length}
       />
+
+      <MilestoneText progress={progress} />
       <ProgressBar
         variant="determinate"
         value={normalize(progress, 0, 1) * 100}
+        style={{ visibility: progress <= 0 ? "hidden" : "visible" }}
       />
 
       <div>
