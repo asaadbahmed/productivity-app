@@ -24,7 +24,7 @@ function Notes() {
   useEffect(() => {
     const completedNotes = notes.filter((note) => {
       console.log(note.completed);
-      return note.completed
+      return note.completed;
     }).length;
     const totalNotes = notes.length;
     console.log(`${completedNotes} / ${totalNotes}`);
@@ -60,9 +60,12 @@ function Notes() {
         />
       </div>
 
-      <NoteForm setNotes={setNotes} noteCount={notes.length} />
+      <NoteForm setNotes={setNotes} />
 
-      <MilestoneText percentage={progress * 100} />
+      <MilestoneText
+        percentage={progress * 100}
+        noteCount={notes.length}
+      />
       <ProgressBar
         variant="determinate"
         value={progress * 100}

@@ -1,7 +1,7 @@
 import React from "react";
 import db from "../appwrite/databases";
 
-function NoteForm({ setNotes, noteCount }) {
+function NoteForm({ setNotes }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 

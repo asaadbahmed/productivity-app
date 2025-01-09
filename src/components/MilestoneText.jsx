@@ -1,4 +1,6 @@
-export default function MilestoneText({ percentage }) {
+export default function MilestoneText({ percentage, noteCount }) {
+  if (noteCount === 0) return null;
+
   const milestoneMessages = {
     0: "You haven't completed any notes yet. Let's get started! 🚦",
     10: "Good job, you've started! The first step is the hardest step! 🥳",
