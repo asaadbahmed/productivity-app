@@ -6,7 +6,25 @@ function Note({ setNotes, setProgress, noteData, noteCount }) {
   const [note, setNote] = useState(noteData);
   const handleUpdate = async () => {
     const completed = !note.completed;
+
     db.notes.update(note.$id, { completed });
+
+    /*
+    if the note was completed, move it to the bottom
+    if the note was uncompleted, move it to the top
+    */
+    if (completed) {
+      setNotes((prevState) => {
+        const filteredNotes = prevState.filter((n) => n.$id != note.$id);
+        return [...filteredNotes, note];
+      });
+    } else {
+      setNotes((prevState) => {
+        const filteredNotes = prevState.filter((n) => n.$id != note.$id);
+        return [note, ...filteredNotes];
+      });
+    }
+
     setNote({ ...note, completed: completed });
     setProgress((prevState) =>
       completed ? prevState + 1 / noteCount : prevState - 1 / noteCount
