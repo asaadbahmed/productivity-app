@@ -15,12 +15,12 @@ function Note({ setNotes, setProgress, noteData, noteCount }) {
 
   const handleDelete = async () => {
     /* deletion effect goes here wooo */
-    const checked = note.completed;
+    const completed = note.completed;
     db.notes.delete(note.$id);
 
     setProgress((prevState) => {
       if (noteCount == 0) return 0;
-      return checked ? (prevState - 1) / noteCount : prevState / noteCount;
+      return completed ? (prevState - 1) / noteCount : prevState / noteCount;
     });
     setNotes((prevState) =>
       prevState.filter((index) => index.$id !== note.$id)
