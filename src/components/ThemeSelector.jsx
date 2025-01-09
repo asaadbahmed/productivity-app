@@ -2,7 +2,7 @@ import React from "react";
 
 function ThemeSelector({ theme, backgroundColor, borderColor }) {
   const setTheme = () => {
-    // update in db
+    // Update the theme in the DB
     document.body.setAttribute("data-theme", theme);
   };
   return (
