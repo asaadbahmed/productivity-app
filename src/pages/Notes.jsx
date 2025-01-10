@@ -72,7 +72,7 @@ function Notes() {
         style={{ visibility: progress <= 0 ? "hidden" : "visible" }}
       />
 
-      <div>
+      <div id="note-container">
         {notes.map((note) => (
           <Note key={note.$id} noteData={note} setNotes={setNotes} />
         ))}
