@@ -10,11 +10,11 @@ function Note({ setNotes, noteData }) {
 
     db.notes.update(note.$id, { completed });
     setNote(updatedNote);
-    
+
     /*
     if the note was completed, move it to the bottom
     if the note was uncompleted, move it to the top
-    */    
+    */
     if (completed) {
       setNotes((prevState) => {
         const filteredNotes = prevState.filter((n) => n.$id !== note.$id);
