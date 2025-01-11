@@ -36,7 +36,10 @@ function Notes() {
     <>
       <div id="main-header-text">
         <h1>✍️ My Notes</h1>
-        <NoteCounter notes={notes} />
+        <NoteCounter
+          progress={progress}
+          noteCount={notes.length}
+        />
       </div>
 
       <div className="theme-options">

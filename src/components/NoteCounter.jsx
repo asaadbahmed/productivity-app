@@ -1,9 +1,10 @@
 import React from "react";
 
-export default function NoteCounter({ notes }) {
+export default function NoteCounter({ progress, noteCount }) {
+  if (noteCount <= 0) return null;
   return (
     <h1>
-      {notes.filter((note) => note.completed).length} / {notes.length}
+      {progress} / {noteCount}
     </h1>
   );
 }
