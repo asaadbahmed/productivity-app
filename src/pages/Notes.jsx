@@ -62,10 +62,7 @@ function Notes() {
 
       <NoteForm setNotes={setNotes} />
 
-      <MilestoneText
-        percentage={progress * 100}
-        noteCount={notes.length}
-      />
+      <MilestoneText percentage={progress * 100} noteCount={notes.length} />
       <ProgressBar
         variant="determinate"
         value={progress * 100}
@@ -76,7 +73,7 @@ function Notes() {
         {notes.map((note) => (
           <Note key={note.$id} noteData={note} setNotes={setNotes} />
         ))}
-      </div>
+      </div>      
     </>
   );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import db from "../appwrite/databases";
 import { ID } from "appwrite";
 import Note from "./Note";
+import DangerAlert from "./DangerAlert";
+import RetryIcon from "../assets/RetryIcon";
 
 function NoteForm({ setNotes }) {
   const handleSubmit = async (event) => {
@@ -27,9 +29,21 @@ function NoteForm({ setNotes }) {
       event.target.reset();
     } catch (error) {
       console.error(error);
-      alert(
-        `Uh oh, sorry! We encountered an issue while creating note. Here's the body you provided: ${noteBody}`
-      );
+      <DangerAlert
+        title="An error occurred!"
+        body={
+          <>
+            Uh oh, we're sorry! We encountered an issue while creating note.
+            Here's the text you provided.
+            <br />
+            <br />
+            {noteBody}
+          </>
+        }
+        option1="Retry"
+        option2={"Dismiss"}
+        option1icon={<RetryIcon viewBox="5 0 20 20" />}
+      />;
     } finally {
       // we want to remove the temporary note now, regardless of the success value
       setNotes((prevState) =>
