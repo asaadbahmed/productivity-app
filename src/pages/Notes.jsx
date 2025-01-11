@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Query } from "appwrite";
 import db from "../appwrite/databases";
 
-import ThemeSelector from "../components/ThemeSelector";
-import NoteForm from "../components/NoteForm";
 import Note from "../components/Note";
+import NoteForm from "../components/NoteForm";
+import NoteCounter from "../components/NoteCounter";
 import ProgressBar from "../components/ProgressBar";
+import ThemeSelector from "../components/ThemeSelector";
 import MilestoneText from "../components/MilestoneText";
 
 function Notes() {
@@ -33,8 +34,9 @@ function Notes() {
 
   return (
     <>
-      <div>
-        <h1 id="main-header-text">✍️ My Notes</h1>
+      <div id="main-header-text">
+        <h1>✍️ My Notes</h1>
+        <NoteCounter notes={notes} />
       </div>
 
       <div className="theme-options">
@@ -59,7 +61,7 @@ function Notes() {
           borderColor="white"
         />
       </div>
-      
+
       <NoteForm setNotes={setNotes} setAlert={setAlert} alert={alert} />
 
       <MilestoneText percentage={progress * 100} noteCount={notes.length} />

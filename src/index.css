@@ -114,7 +114,10 @@ div {
 }
 
 #main-header-text {
-  font-family: 'bold';
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
 }
 
 #milestone-text {
