@@ -7,6 +7,11 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['ui-sans-serif', 'system-ui', 'Helvetica', 'Arial', 'sans-serif'],
+      'serif': ['ui-serif', 'Georgia'],
+      'mono': ['ui-monospace', 'SFMono-Regular'],
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
