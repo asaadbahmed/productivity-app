@@ -109,6 +109,10 @@ div {
   padding: 2em 0;
 }
 
+#milestone-text {
+  text-align: center;
+}
+
 #notes-form {
   margin: 2em 0;
 }

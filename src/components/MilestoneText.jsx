@@ -13,5 +13,5 @@ export default function MilestoneText({ percentage, noteCount }) {
     .map(Number)
     .reverse()
     .find((milestone) => percentage >= milestone);
-  return <h4>{milestoneMessages[closestMilestone]}</h4>;
+  return <h4 id="milestone-text">{milestoneMessages[closestMilestone]}</h4>;
 }
