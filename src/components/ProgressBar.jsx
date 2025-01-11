@@ -8,17 +8,17 @@ const ProgressBar = styled(LinearProgress)(({ theme }) => ({
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor: theme.palette.grey[200],
-    ...theme.applyStyles("dark", {
+    ...theme.applyStyles("light", {
       backgroundColor: theme.palette.grey[800],
     }),
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
     backgroundColor: "#00FF96",
-    ...theme.applyStyles("dark", {
+    ...theme.applyStyles("light", {
       backgroundColor: "#308fe8",
     }),
   },
 }));
-//00FF96
+
 export default ProgressBar;

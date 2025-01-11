@@ -37,7 +37,7 @@ function Notes() {
       <div id="main-header-text">
         <h1>✍️ My Notes</h1>
         <NoteCounter
-          progress={progress}
+          progress={notes.filter((note) => note.completed).length}
           noteCount={notes.length}
         />
       </div>
