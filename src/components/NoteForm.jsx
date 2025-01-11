@@ -1,7 +1,7 @@
 import React from "react";
 import db from "../appwrite/databases";
 import { ID } from "appwrite";
-import Note from "./Note";
+
 import DangerAlert from "./DangerAlert";
 import RetryIcon from "../assets/RetryIcon";
 

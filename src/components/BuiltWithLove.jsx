@@ -1,9 +1,15 @@
-import { Heart } from "lucide-react";
+import HeartIcon from "@/assets/HeartIcon";
 
 const BuiltWithLove = () => (
-  <p style={{ fontWeight: "bold", fontSize: "0.8rem", paddingBottom: "10px" }}>
+  <p
+    style={{
+      fontWeight: "bold",
+      fontSize: "0.8rem",
+      paddingBottom: "10px",
+    }}
+  >
     Built with love{" "}
-    <Heart style={{ verticalAlign: "middle", display: "inline-block" }} />
+    <HeartIcon styleProps={{ display: "inline", verticalAlign: "middle" }} />
   </p>
 );
 export default BuiltWithLove;
