@@ -21,12 +21,15 @@ function NoteForm({ setNotes }) {
     setNotes((prevState) => [temporaryNote, ...prevState]);
 
     try {
+      /*
       const payload = { body: noteBody };
       const response = await db.notes.create(payload);
 
       setNotes((prevState) => [response, ...prevState]);
 
       event.target.reset();
+      */
+      throw new Error("simulating an error");
     } catch (error) {
       console.error(error);
       <DangerAlert

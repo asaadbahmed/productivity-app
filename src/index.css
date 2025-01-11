@@ -113,6 +113,10 @@ div {
   padding: 2em 0;
 }
 
+#main-header-text {
+  font-weight: bold;
+}
+
 #milestone-text {
   font-weight: bold;
   text-align: center;

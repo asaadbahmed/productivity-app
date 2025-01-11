@@ -34,7 +34,7 @@ function Notes() {
   return (
     <>
       <div>
-        <h1>✍️ My Notes</h1>
+        <h1 id="main-header-text">✍️ My Notes</h1>
       </div>
 
       <div className="theme-options">
@@ -73,7 +73,7 @@ function Notes() {
         {notes.map((note) => (
           <Note key={note.$id} noteData={note} setNotes={setNotes} />
         ))}
-      </div>      
+      </div>
     </>
   );
 }
