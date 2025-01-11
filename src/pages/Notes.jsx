@@ -8,6 +8,7 @@ import NoteCounter from "../components/NoteCounter";
 import ProgressBar from "../components/ProgressBar";
 import ThemeSelector from "../components/ThemeSelector";
 import MilestoneText from "../components/MilestoneText";
+import BuiltWithLove from "@/components/BuiltWithLove";
 
 function Notes() {
   const [notes, setNotes] = useState([]);
@@ -33,6 +34,7 @@ function Notes() {
 
   return (
     <>
+      <BuiltWithLove />
       <div id="main-header-text">
         <h1>✍️ My Notes</h1>
         <NoteCounter
