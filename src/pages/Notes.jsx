@@ -25,7 +25,6 @@ function Notes() {
 
   useEffect(() => {
     const completedNotes = notes.filter((note) => {
-      console.log(note.completed);
       return note.completed;
     }).length;
     const totalNotes = notes.length;

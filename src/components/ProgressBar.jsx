@@ -1,3 +1,7 @@
+import { Progress } from "@/components/ui/progress";
+const ProgressBar = ({ value }) => <Progress value={value} />;
+export default ProgressBar;
+/*
 import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
@@ -22,3 +26,5 @@ const ProgressBar = styled(LinearProgress)(({ theme }) => ({
 }));
 
 export default ProgressBar;
+
+*/
