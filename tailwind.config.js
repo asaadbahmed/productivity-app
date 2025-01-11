@@ -16,6 +16,11 @@ export default {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        progress: {
+          bg: "hsl(var(--progress-bg))",
+          bar: "hsl(var(--progress-bar))",
+          text: "hsl(var(--progress-text))",
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

@@ -68,7 +68,6 @@ function Notes() {
 
       <MilestoneText percentage={progress * 100} noteCount={notes.length} />
       <ProgressBar
-        variant="determinate"
         value={progress * 100}
         style={{ visibility: progress <= 0 ? "hidden" : "visible" }}
       />
