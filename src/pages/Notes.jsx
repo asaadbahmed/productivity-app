@@ -68,8 +68,12 @@ function Notes() {
 
       <MilestoneText percentage={progress * 100} noteCount={notes.length} />
       <ProgressBar
-        value={progress * 100}
+        percentage={progress * 100}
         style={{ visibility: progress <= 0 ? "hidden" : "visible" }}
+        animate={{
+          time: "0.5s",
+          style: "ease-out",
+        }}
       />
 
       <div id="note-container">

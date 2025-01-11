@@ -1,3 +1,3 @@
 import { Progress } from "@/components/ui/progress";
-const ProgressBar = ({ value }) => <Progress value={value} />;
+const ProgressBar = ({ percentage, animate }) => <Progress value={percentage} animate={animate} />;
 export default ProgressBar;
