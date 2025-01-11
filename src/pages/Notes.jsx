@@ -11,6 +11,7 @@ import MilestoneText from "../components/MilestoneText";
 function Notes() {
   const [notes, setNotes] = useState([]);
   const [progress, setProgress] = useState(0);
+  const [alert, setAlert] = useState(null);
 
   const init = async () => {
     const response = await db.notes.list([Query.orderDesc("$createdAt")]);
@@ -27,7 +28,6 @@ function Notes() {
       return note.completed;
     }).length;
     const totalNotes = notes.length;
-    console.log(`${completedNotes} / ${totalNotes}`);
     setProgress(totalNotes > 0 ? completedNotes / totalNotes : 0);
   }, [notes]);
 
@@ -59,8 +59,8 @@ function Notes() {
           borderColor="white"
         />
       </div>
-
-      <NoteForm setNotes={setNotes} />
+      
+      <NoteForm setNotes={setNotes} setAlert={setAlert} alert={alert} />
 
       <MilestoneText percentage={progress * 100} noteCount={notes.length} />
       <ProgressBar

@@ -1,6 +1,6 @@
 const RetryIcon = ({ viewBox = "0 0 24 24" }) => (
   <svg
-    class="me-2 h-3 w-3"
+    className="me-2 h-3 w-3"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
