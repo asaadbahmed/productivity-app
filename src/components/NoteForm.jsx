@@ -21,10 +21,10 @@ function NoteForm({ setNotes, setAlert, alert }) {
     setNotes((prevState) => [temporaryNote, ...prevState]);
 
     try { 
-      const payload = { body: noteBody };
+      const payload = { body: noteBody, completed: false, dateCreated: new Date() };
       const response = await db.notes.create(payload);
 
-      setNotes((prevState) => [response, ...prevState]);
+      setNotes((prevState) => [response, ...prevState]);      
 
       event.target.reset();
     } catch (error) {
