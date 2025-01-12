@@ -8,7 +8,7 @@ function Note({ setNotes, noteData }) {
     const completed = !note.completed;
     const updatedNote = { ...note, completed: completed };
 
-    db.notes.update(note.$id, { completed });
+    db.notes.update(note.$id, { completed, dateCompleted: new Date() });
     setNote(updatedNote);
 
     /*
