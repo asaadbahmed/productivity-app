@@ -42,7 +42,6 @@ function Notes() {
           noteCount={notes.length}
         />
       </div>
-
       <div className="theme-options">
         <ThemeSelector
           theme="dark"
@@ -65,19 +64,18 @@ function Notes() {
           borderColor="white"
         />
       </div>
-
       <NoteForm setNotes={setNotes} setAlert={setAlert} alert={alert} />
-
       <MilestoneText percentage={progress * 100} noteCount={notes.length} />
-      <ProgressBar
-        percentage={progress * 100}
-        style={{ visibility: progress <= 0 ? "hidden" : "visible" }}
-        animate={{
-          time: "0.5s",
-          style: "ease-out",
-        }}
-      />
-
+      {/* only render the progress-bar if there is atleast one note */}
+      {notes.length > 0 ? (
+        <ProgressBar
+          percentage={progress * 100}
+          animate={{
+            time: "0.5s",
+            style: "ease-out",
+          }}
+        />
+      ) : null}
       <div id="note-container">
         {notes.map((note) => (
           <Note key={note.$id} noteData={note} setNotes={setNotes} />
