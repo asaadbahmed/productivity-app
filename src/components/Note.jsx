@@ -1,6 +1,8 @@
 import { useState } from "react";
-import db from "../appwrite/databases";
-import DeleteIcon from "../assets/DeleteIcon";
+import db from "@/appwrite/databases"; //../appwrite/databases
+import DeleteIcon from "@/assets/DeleteIcon";
+import StarIcon from "@/assets/StarIcon";
+import FilledStarIcon from "@/assets/FilledStarIcon";
 
 function Note({ setNotes, noteData }) {
   const [note, setNote] = useState(noteData);
@@ -63,10 +65,11 @@ function Note({ setNotes, noteData }) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          gap: "10px"
         }}
       >
         <div className="delete" onClick={handleStar}>
-          <DeleteIcon />
+          {note.starred ? <FilledStarIcon /> : <StarIcon />}
         </div>
         <div className="delete" onClick={handleDelete}>
           <DeleteIcon />
