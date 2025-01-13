@@ -1,4 +1,4 @@
-// *** IMPORANT *** icons only supported for option1 currently, actions only supported for option2 currently
+// *** IMPORANT *** icons only supported for option1 currently
 export default function DangerAlert({ title, body, option1, option2, option1icon, option2icon, option1action, option2action }) {
   return (
     <div
@@ -24,6 +24,7 @@ export default function DangerAlert({ title, body, option1, option2, option1icon
         <button
           type="button"
           className="text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          onClick={option1action}
         >          
           {option1icon}
           {option1}
