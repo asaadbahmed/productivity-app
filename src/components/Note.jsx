@@ -4,9 +4,9 @@ import DeleteIcon from "../assets/DeleteIcon";
 
 function Note({ setNotes, noteData }) {
   const [note, setNote] = useState(noteData);
-  const handleUpdate = async () => {
+  const handleComplete = async () => {
     const completed = !note.completed;
-    const updatedNote = { ...note, completed: completed };
+    const updatedNote = { ...note, completed };
 
     db.notes.update(note.$id, { completed, dateCompleted: new Date() });
     setNote(updatedNote);
@@ -36,9 +36,20 @@ function Note({ setNotes, noteData }) {
     );
   };
 
+  const handleStar = async () => {
+    /* star effect goes here wooo */
+    const starred = !note.starred;
+    const updatedNote = { ...note, starred };
+
+    db.notes.update(note.$id, { starred });
+    setNote(updatedNote);
+
+    /* if the note was starred, move it to the very top, and if it was unstarred move it to under the last starred note */
+  };
+
   return (
     <div className="note-wrapper">
-      <span className="note-body" onClick={handleUpdate}>
+      <span className="note-body" onClick={handleComplete}>
         {note.completed ? (
           <s>
             <b>{note.title}</b>
@@ -47,8 +58,19 @@ function Note({ setNotes, noteData }) {
           <b>{note.title}</b>
         )}
       </span>
-      <div className="delete" onClick={handleDelete}>
-        <DeleteIcon />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <div className="delete" onClick={handleStar}>
+          <DeleteIcon />
+        </div>
+        <div className="delete" onClick={handleDelete}>
+          <DeleteIcon />
+        </div>
       </div>
     </div>
   );
