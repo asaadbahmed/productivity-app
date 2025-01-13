@@ -9,18 +9,18 @@ function NoteForm({ setNotes, setAlert, alert }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const noteBody = event.target.body.value;
-    if (noteBody === "" || noteBody.length < 3) return;
+    const noteTitle = event.target.body.value;
+    if (noteTitle === "" || noteTitle.length < 3) return;
 
     const temporaryNote = {
       $id: ID.unique(),
       completed: false,
-      body: noteBody,
+      title: noteTitle,
     };
 
     const retry = async () => {
       try {
-        const payload = { body: noteBody, dateCreated: new Date() };
+        const payload = { title: noteTitle, dateCreated: new Date() };
         const response = await db.notes.create(payload);
 
         setNotes((prevState) => [response, ...prevState]);
@@ -35,10 +35,10 @@ function NoteForm({ setNotes, setAlert, alert }) {
               <>
                 Uh oh, we're sorry! We encountered an issue while creating note.
                 Contact us at nosupport@fakemail.com if this issue persists.
-                Here's the text you provided.
+                Here's the title you provided.
                 <br />
                 <br />
-                {noteBody}
+                {noteTitle}
               </>
             }
             option1="Retry"

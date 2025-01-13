@@ -41,10 +41,10 @@ function Note({ setNotes, noteData }) {
       <span className="note-body" onClick={handleUpdate}>
         {note.completed ? (
           <s>
-            <b>{note.body}</b>
+            <b>{note.title}</b>
           </s>
         ) : (
-          <b>{note.body}</b>
+          <b>{note.title}</b>
         )}
       </span>
       <div className="delete" onClick={handleDelete}>
