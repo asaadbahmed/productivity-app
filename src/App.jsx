@@ -9,7 +9,13 @@ function App() {
   return (
     <div id="app">
       <div id="container">
-        <BrowserRouter basename="/productivity-app">
+        <BrowserRouter
+          basename="/productivity-app"
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <Routes>
             <Route element={<Notes />} path="/" />
             <Route element={<Login />} path="/login" />
