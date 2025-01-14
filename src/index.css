@@ -145,7 +145,7 @@ div {
 
 #notes-form input:focus {
   box-shadow: 0 0 4px var(--glow-color); /* Glow */
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .note-wrapper {
