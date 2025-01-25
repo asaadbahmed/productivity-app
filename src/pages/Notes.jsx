@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Query } from "appwrite";
-import db from "../appwrite/databases";
+import db from "@/appwrite/databases";
 
-import Note from "../components/Note";
-import NoteForm from "../components/NoteForm";
-import NoteCounter from "../components/NoteCounter";
-import ProgressBar from "../components/ProgressBar";
-import ThemeSelector from "../components/ThemeSelector";
-import MilestoneText from "../components/MilestoneText";
+import Note from "@/components/Note";
+import NoteForm from "@/components/NoteForm";
+import NoteCounter from "@/components/NoteCounter";
+import ProgressBar from "@/components/ProgressBar";
+import ThemeSelector from "@/components/ThemeSelector";
+import MilestoneText from "@/components/MilestoneText";
 import BuiltWithLove from "@/components/BuiltWithLove";
 
 function Notes() {
